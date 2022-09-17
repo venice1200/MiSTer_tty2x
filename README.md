@@ -5,7 +5,7 @@ which is currently loaded by the Mister FPGA, to the configured **tty** device.
 **Installation**  
 Get the files from this Repo and copy the content to your MiSTer FPGA into the folder `/media/fat/tty2x`.  
   
-**tty device**  
+**tty Device**  
 The default tty device is **/dev/ttyUSB0** and is set in `/media/fat/tty2x/tty2x.ini`.  
 If you need to use another **tty** Device, configure yours in the `/media/fat/tty2x/tty2x-user.ini` file.  
 Some examples are already in the file. Remove the leading "#" to activate the correct entry.  
