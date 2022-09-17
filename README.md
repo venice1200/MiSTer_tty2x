@@ -1,5 +1,7 @@
-# MiSTer_tty2x
-A universal **tty2x Daemon** which sends **only** the Corename of the Core,  
+# MiSTer_tty2x  
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/venice1200/MiSTer_tty2oled/blob/main/LICENSE)  
+  
+An universal **tty2x Daemon** which sends **only** the Corename of the Core,  
 which is currently loaded by the Mister FPGA, to the configured **tty** device.  
  
 **Installation**  
@@ -17,6 +19,4 @@ Uncomment the Option `#SENDQWERTZ="no"` in `/media/fat/tty2x/tty2x-user.ini` by 
   
 **Autostart**  
 If you run `/media/fat/tty2x/S60tty2x setup` the autostart entry for **tty2x**  
-within `/media/fat/linux/user-startup.sh` will be created.
-  
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/venice1200/MiSTer_tty2oled/blob/main/LICENSE)
+within `/media/fat/linux/user-startup.sh` will be created.  
