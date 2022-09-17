@@ -13,7 +13,7 @@ Some examples are already in the file. Remove the leading "#" to activate the co
 **Options**  
 The only option which can be deactivated is the possiblity to disable the "first transmission".  
 Means, the value "QWERTZ" will not been sent to the tty Device to „clear“ the Arduino's receive and the MiSTer's send buffer.  
-Uncomment the Option `#SENDQWERTZ="no"` in `/media/fat/tty2x/tty2x-user.ini` by removing the leading "#" for this.  
+Uncomment the Option `#SENDQWERTZ="no"` in `/media/fat/tty2x/tty2x-user.ini` by removing the leading "#".  
   
 **Autostart**  
 If you run `/media/fat/tty2x/S60tty2x setup` the autostart entry for **tty2x**  
