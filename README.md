@@ -1,5 +1,5 @@
 # MiSTer_tty2x
-A universal **tty2x Daemon** which sends **only** the Corename of the Core, currently loaded by Mister FPFA, to the configured **tty** device.  
+A universal **tty2x Daemon** which sends **only** the Corename of the Core, which is currently loaded by Mister FPGA, to the configured **tty** device.  
  
 **Installation**  
 Get the files from this Repo and copy the content to your MiSTer FPGA into the folder `/media/fat/tty2x`.  
