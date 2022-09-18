@@ -6,8 +6,8 @@ which is currently loaded by the Mister FPGA, to the configured **tty** device.
  
 **Installation**  
 Get the latest Release from this Repo and extract only the files to your MiSTer FPGA into the folder `/media/fat/tty2x`.  
-Or use the follwing One-Liner from the MiSTer's Command Line  
-`wget https://github.com/venice1200/MiSTer_tty2x/archive/refs/heads/main.zip -O /tmp/tty2x.zip && unzip -j /tmp/tty2x.zip "MiSTer_tty2x-main/*" -d /media/fat/tty2xv2 && rm /tmp/tty2x.zip`  
+Or use the following **One-Liner** from the MiSTer's Command Line:  
+`wget https://github.com/venice1200/MiSTer_tty2x/archive/refs/heads/main.zip -O /tmp/tty2x.zip && unzip -j /tmp/tty2x.zip "MiSTer_tty2x-main/*" -d /media/fat/tty2x && rm /tmp/tty2x.zip`  
   
 **tty Device**  
 The default tty device is **/dev/ttyUSB0** and is set in `/media/fat/tty2x/tty2x.ini`.  
