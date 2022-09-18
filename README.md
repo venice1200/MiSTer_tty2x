@@ -5,7 +5,7 @@ An universal **tty2x Daemon** which sends **only** the Corename of the Core,
 which is currently loaded by the Mister FPGA, to the configured **tty** device.  
  
 **Installation**  
-Get the latest Release from this Repo and extract and copy the content to your MiSTer FPGA into the folder `/media/fat/tty2x`.  
+Get the latest Release from this Repo and extract only the files to your MiSTer FPGA into the folder `/media/fat/tty2x`.  
   
 **tty Device**  
 The default tty device is **/dev/ttyUSB0** and is set in `/media/fat/tty2x/tty2x.ini`.  
