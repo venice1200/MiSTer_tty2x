@@ -1,7 +1,7 @@
 # MiSTer_tty2x  
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/venice1200/MiSTer_tty2oled/blob/main/LICENSE)  
   
-An **Universal tty2x Script Daemon** which sends **only** the Corename of the Core,  
+An **Universal tty2x Script Daemon** which sends **only** the Name of the Core,  
 which is currently loaded by the Mister FPGA, to the configured **tty** device.  
  
 **Installation**  
