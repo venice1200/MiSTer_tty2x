@@ -1,0 +1,86 @@
+#!/bin/bash
+
+# By venice & ojaksch
+# 2022-09-12 Release
+#
+
+! [ "$(dos2unix -ic /media/fat/tty2x/*.ini)" = "" ] && dos2unix -k -q /media/fat/tty2x/*.ini
+
+. /media/fat/tty2x/tty2x.ini
+. /media/fat/tty2x/tty2x-user.ini
+
+# Start
+start() {
+    ### Wait for USB module and start tty2x daemon
+    WAITEND=$((SECONDS+10))
+    while !  [ -c ${TTYDEV} ] && [ ${SECONDS} -lt ${WAITEND} ]; do
+      sleep 0.1
+    done
+    if ! [ -c ${TTYDEV} ]; then
+      echo "Could not find the needed USB module ${TTYDEV}. Exiting."
+      exit 1
+    fi
+
+    if [[ -x ${DAEMONSCRIPT} ]]; then
+      if [ -e /run/tty2x-daemon.pid ] && [ -d /proc/$(</run/tty2x-daemon.pid) ]; then
+	echo "${DAEMONNAME} already running"
+	exit 1
+      else
+	echo "Starting ${DAEMONNAME}..."
+	${DAEMONSCRIPT} & echo $! > /run/tty2x-daemon.pid
+      fi
+    else
+      echo "${DAEMONSCRIPT} not found!"
+    fi
+}
+
+# Stop
+stop() {
+    echo "Stopping ${DAEMONNAME}..."
+    if [ -e /run/tty2x-daemon.pid ]; then
+      PIDDAEMON=$(</run/tty2x-daemon.pid)
+      PIDINOTIFY=$(ps -eo pid,ppid,args | grep $(ps | grep tty2x | awk 'NR==1{print $1}') | tail -1 | awk '{print $1}')
+      #echo "PIDDAEMON = $PIDDAEMON"
+      #echo "PIDINOTIFY = $PIDINOTIFY"
+    fi
+    [ ${PIDDAEMON} ] && kill ${PIDDAEMON} &> /dev/null
+    [ ${PIDINOTIFY} ] && kill ${PIDINOTIFY} &> /dev/null
+    rm -f /run/tty2x-daemon.pid
+}
+
+setup() {
+    if [ ! -e ${USERSTARTUP} ] && [ -e /etc/init.d/S99user ]; then
+      if [ -e ${USERSTARTUPTPL} ]; then
+        echo "Copying ${USERSTARTUPTPL} to ${USERSTARTUP}"
+        cp ${USERSTARTUPTPL} ${USERSTARTUP}
+      else
+        echo "Creating ${USERSTARTUP}"
+        echo -e "#!/bin/sh\n" > ${USERSTARTUP}
+        echo -e 'echo "***" $1 "***"' >> ${USERSTARTUP}
+      fi
+    fi
+
+    if [ $(grep -c "tty2x"  ${USERSTARTUP}) = "0" ]; then
+      echo "Adding tty2x init to user-startup"
+      echo -e "\n# Startup tty2x" >>  ${USERSTARTUP}
+      echo -e "[[ -e ${INITSCRIPT} ]] && ${INITSCRIPT} \$1" >>  ${USERSTARTUP}
+    fi
+}
+case "$1" in
+  start)
+	start
+	;;
+  stop) 
+	stop
+	;;
+  restart)
+	stop
+	start
+	;;
+  setup)
+	setup
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart|setup}"
+	exit 1
+esac
