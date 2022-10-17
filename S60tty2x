@@ -61,9 +61,11 @@ setup() {
     fi
 
     if [ $(grep -c "tty2x"  ${USERSTARTUP}) = "0" ]; then
-      echo "Adding tty2x init to user-startup"
+      echo "Adding tty2x init to user-startup!"
       echo -e "\n# Startup tty2x" >>  ${USERSTARTUP}
       echo -e "[[ -e ${INITSCRIPT} ]] && ${INITSCRIPT} \$1" >>  ${USERSTARTUP}
+    else
+      echo "tty2x init setup already done!" 
     fi
 }
 case "$1" in
