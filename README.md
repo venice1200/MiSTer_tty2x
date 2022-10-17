@@ -2,7 +2,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/venice1200/MiSTer_tty2oled/blob/main/LICENSE)  
   
 An **Universal tty2x Script Daemon** which sends **only** the Name of the Core,  
-which is currently loaded by the Mister FPGA, to the configured **tty** device.  
+which is currently loaded by the Mister FPGA, to the configured **device**.  
  
 **Installation**  
 Get the latest Release from this Repo and extract only the files to your MiSTer FPGA into the folder `/media/fat/tty2x`.  
